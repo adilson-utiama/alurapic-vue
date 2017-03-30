@@ -10,7 +10,7 @@
 
             <!-- Uso de Shared Component -->
             <meu-painel :titulo="foto.titulo">
-                <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
+                <imagem-responsiva :url="foto.url" :titulo="foto.titulo"></imagem-responsiva>
             </meu-painel>
                       
         </li>
