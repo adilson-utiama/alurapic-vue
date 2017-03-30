@@ -5,8 +5,8 @@
 
     <transition name="painel-fade">
         <div class="painel-conteudo" v-show="visivel">
-        <slot ><!-- Conteudo a ser recebido aqui. --></slot>
-    </div>
+            <slot ><!-- Conteudo a ser recebido aqui. --></slot>
+        </div>
     </transition>
    
 </div>
