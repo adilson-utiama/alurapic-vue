@@ -3,6 +3,8 @@
 
     <h1 class="centraliza">{{ titulo }}</h1>
 
+    <input type="search" v-on:input="filtro = $event.target.value" class="filtro" placeholder="Digite sua pesquisa">
+   
     <ul class="lista-fotos">
         <li class="lista-fotos-item" v-for="foto of fotos"><!-- Diretiva de laco 'v-for' -->
 
@@ -33,9 +35,8 @@ export default {
 
     return {
       titulo: 'Alurapic Vue',
-      fotos: [
-        
-      ]
+      fotos: [],
+      filtro: ''
     }
   },
 
@@ -72,6 +73,17 @@ export default {
 
 .imagem-responsiva {
     width: 100%;
+}
+
+.filtro {
+    border-radius: 10px;
+    padding: 10px;
+    display: block;
+    width: 100%;
+}
+
+.filtro:focus {
+    box-shadow: 0px 0px 7px blue;
 }
 
 </style>
