@@ -3,10 +3,10 @@
 
     <h1 class="centraliza">{{ titulo }}</h1>
 
-    <input type="search" v-on:input="filtro = $event.target.value" class="filtro" placeholder="Digite sua pesquisa">
+    <input type="search" v-on:input="filtro = $event.target.value" class="filtro" placeholder="Digite sua pesquisa"><!-- v-on: pode ser utilizado apenas com @ ex: @input -->
    
     <ul class="lista-fotos">
-        <li class="lista-fotos-item" v-for="foto of fotos"><!-- Diretiva de laco 'v-for' -->
+        <li class="lista-fotos-item" v-for="foto of fotosComFiltro"><!-- Diretiva de laco 'v-for' -->
 
             <!-- Uso de Shared Component -->
             <meu-painel :titulo="foto.titulo">
@@ -38,6 +38,19 @@ export default {
       fotos: [],
       filtro: ''
     }
+  },
+
+  computed: {
+
+    fotosComFiltro() {
+        if(this.filtro) {
+            let exp = new RegExp(this.filtro.trim(), 'i'); //cria uma expressao regular a partir do filtro, i = insensitive
+            return this.fotos.filter(foto => exp.test(foto.titulo)); //retorna uma lista filtrada
+        } else {
+            return this.fotos;
+        }
+    }
+
   },
 
   created() {
