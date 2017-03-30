@@ -10,7 +10,7 @@
 
             <!-- Uso de Shared Component -->
             <meu-painel :titulo="foto.titulo">
-                <img class="imagem-responsiva" :src="foto.url" v-bind:alt="foto.titulo"><!-- Podemos usar o atalho ':' ou 'v-bind:' -->
+                <imagem-responsiva :url="foto.url" :titulo="foto.titulo" >
             </meu-painel>
                       
         </li>
@@ -22,13 +22,15 @@
 <script>
 
 import Painel from './components/shared/painel/Painel.vue';
+import ImagemResponsiva from './components/shared/imagem-responsiva/ImagemResponsiva.vue';
 
 
 export default {
 
   //Associando Painel a 'meu-painel'
   components: {
-    'meu-painel' : Painel
+    'meu-painel' : Painel,
+    'imagem-responsiva' : ImagemResponsiva
   },
 
    data () {
@@ -84,9 +86,6 @@ export default {
     display: inline-block;
 }
 
-.imagem-responsiva {
-    width: 100%;
-}
 
 .filtro {
     border-radius: 10px;
