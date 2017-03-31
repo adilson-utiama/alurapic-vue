@@ -11,7 +11,7 @@
             <!-- Uso de Shared Component -->
             <meu-painel :titulo="foto.titulo">
                 <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
-                <meu-botao tipo="button" rotulo="REMOVER" @click.native="remover(foto)"/>
+                <meu-botao tipo="button" rotulo="REMOVER" estilo="perigo" :confirmacao="true" @botaoAtivado="remover(foto)"/>
             </meu-painel>
                       
         </li>
@@ -48,9 +48,9 @@ export default {
   methods: {
 
       remover(foto) {
-          if(confirm('Remover a foto?')){
-                alert('Removendo foto ' + foto.titulo);
-          }
+          
+            alert('Removendo foto ' + foto.titulo);
+          
           
       }
   },
