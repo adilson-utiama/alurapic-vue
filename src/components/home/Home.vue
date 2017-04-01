@@ -10,7 +10,7 @@
 
             <!-- Uso de Shared Component -->
             <meu-painel :titulo="foto.titulo">
-                <imagem-responsiva v-meu-transform.animate.reverse="15" :url="foto.url" :titulo="foto.titulo" />
+                <imagem-responsiva v-meu-transform:scale.animate="1.3" :url="foto.url" :titulo="foto.titulo" />
                 <meu-botao tipo="button" rotulo="REMOVER" estilo="perigo" :confirmacao="true" @botaoAtivado="remover(foto)"/>
             </meu-painel>
                       
