@@ -1,6 +1,4 @@
-import Vue from 'vue';
-
-Vue.directive('meu-transform', {
+export default {
 
     bind(element, binding, vnode){
 
@@ -28,4 +26,4 @@ Vue.directive('meu-transform', {
 
         });
     }
-});
+};

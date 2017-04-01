@@ -10,7 +10,7 @@
 
             <!-- Uso de Shared Component -->
             <meu-painel :titulo="foto.titulo">
-                <imagem-responsiva v-meu-transform:scale.animate="1.3" :url="foto.url" :titulo="foto.titulo" />
+                <imagem-responsiva v-meu-transform:rotate.animate="15" :url="foto.url" :titulo="foto.titulo" />
                 <meu-botao tipo="button" rotulo="REMOVER" estilo="perigo" :confirmacao="true" @botaoAtivado="remover(foto)"/>
             </meu-painel>
                       
@@ -26,8 +26,15 @@ import Painel from '../shared/painel/Painel.vue';
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue';
 import Botao from '../shared/botao/Botao.vue';
 
+// importou  diretiva. Tem que adicionar na propriedade directives logo abaixo!
+import transform from '../../directives/Transform';
+
 
 export default {
+
+    directives: {
+        'meu-transform': transform
+    },
 
   //Associando Painel a 'meu-painel'
   components: {
