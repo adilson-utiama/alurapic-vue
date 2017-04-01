@@ -9,8 +9,12 @@ Vue.directive('meu-transform', {
 
             let incremento = binding.value || 90;
                         
-            current += incremento;
-
+            if(binding.modifiers.reverse){
+                current -= incremento;
+            } else {
+                current += incremento;
+            }
+           
             element.style.transform = `rotate(${current}deg)`;
 
             //testando se ha o modifier 'animate'
