@@ -2,7 +2,7 @@
   <div>
 
     <h1 class="centraliza">{{ titulo }}</h1>
-
+    <p v-show="mensagem" class="centraliza">{{ mensagem }}</p>
     <input type="search" v-on:input="filtro = $event.target.value" class="filtro" placeholder="Digite sua pesquisa"><!-- v-on: pode ser utilizado apenas com @ ex: @input -->
    
     <ul class="lista-fotos">
@@ -48,7 +48,8 @@ export default {
     return {
       titulo: 'Alurapic Vue',
       fotos: [],
-      filtro: ''
+      filtro: '',
+      mensagem: ''
     }
   },
 
@@ -56,7 +57,15 @@ export default {
 
       remover(foto) {
           
-            alert('Removendo foto ' + foto.titulo);
+            this.$http.delete(`http://localhost:3000/v1/fotos/${foto._id}`)
+                .then(() => { 
+                    let indice = this.fotos.indexOf(foto);
+                    this.fotos.splice(indice, 1);
+                    this.mensagem = 'Foto removida com sucesso!'
+                }, err => {
+                    this.mensagem = 'Não foi possivel remover a foto!';
+                    console.log(err);
+            });
           
           
       }
