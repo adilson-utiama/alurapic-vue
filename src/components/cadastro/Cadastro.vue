@@ -4,6 +4,9 @@
     <h1 class="centralizado">Cadastro</h1>
     <h2 class="centralizado">{{ foto.titulo }}</h2>
 
+    <h1 v-if="foto._id" class="centralizado">Alteração</h1>
+    <h1 v-else class="centralizado">Inclusão</h1>
+
     <form @submit.prevent="grava()"><!-- Com modifier 'prevent' cancelamos a recarga da pagina ao submeter -->
       <div class="controle">
         <label for="titulo">TÍTULO</label>
@@ -13,7 +16,10 @@
       <div class="controle">
         <label for="url">URL</label>
         <input id="url" autocomplete="off" v-model.lazy="foto.url"><!-- A imagem so sera carregada apos este campo perder o foco -->
-        <imagem-responsiva v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
+        <div class="espaco-foto">
+            <imagem-responsiva v-show="foto.url" :url="foto.url" :titulo="foto.titulo"/>
+        </div>
+        
       </div>
 
       <div class="controle">
@@ -58,7 +64,10 @@ export default {
 
           this.service
             .cadastra(this.foto) 
-            .then(() => this.foto = new Foto(), err => console.log(err));
+            .then(() => {
+                if(this.id) this.$router.push({ name: 'home'});
+                this.foto = new Foto();
+            }, err => console.log(err));
             
       }
   },
@@ -102,6 +111,10 @@ export default {
 
   .centralizado {
     text-align: center;
+  }
+
+  .espaco-foto {
+      width: 25%;
   }
 
 </style>
