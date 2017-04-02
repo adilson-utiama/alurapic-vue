@@ -11,6 +11,9 @@
             <!-- Uso de Shared Component -->
             <meu-painel :titulo="foto.titulo">
                 <imagem-responsiva v-meu-transform:rotate.animate="15" :url="foto.url" :titulo="foto.titulo" />
+                <router-link :to="{ name: 'altera', params : { id : foto._id }}">
+                    <meu-botao tipo="button" rotulo="ALTERAR" />
+                </router-link>
                 <meu-botao tipo="button" rotulo="REMOVER" estilo="perigo" :confirmacao="true" @botaoAtivado="remover(foto)"/>
             </meu-painel>
                       
