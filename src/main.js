@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
+import VeeValidate from 'vee-validate';
 
 import { routes } from './routes';
 
@@ -15,6 +16,8 @@ const router = new VueRouter({
   routes : routes,
   mode: 'history'
 }); 
+
+Vue.use(VeeValidate);
 
 new Vue({
   el: '#app',
